@@ -6,9 +6,10 @@
 
 using namespace Eigen;
 
-void set_H(MatrixXd & M);
 double norma;
 double determinante;
+
+void set_H(MatrixXd & M);
 
 int main(int argc, char **argv)
 {
