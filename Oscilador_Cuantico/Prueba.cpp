@@ -1,28 +1,31 @@
 #include<iostream>
-#include<cmath>
-#include<algorithm>
-#include<eigen3/Eigen/Dense>
-#include<eigen3/Eigen/Core>
+//#include<cmath>
+//#include<algorithm>
+#include<armadillo>
 
-using namespace Eigen;
+using namespace std;
+using namespace arma;
 
-void set_H(MatrixXd & M);
 double norma;
 double determinante;
 
-int main(int argc, char **argv)
+int main()
 {
-  Matrix2d H, I;
+  mat H;
+  mat I;
 
-  H << 1, 2,
-    3, 4;
+  H << 1 << 2 << endr
+    << 3 << 4 << endr;
   
-  I = H.inverse();
+  I = inv(H);
+
+  cx_vec eigval = eig_gen(H);
   
-  norma = H.norm();
-  determinante = H.determinant();
+  norma = norm(H,2);
+  determinante = det(H);
   
-  std::cout << H << "\n\n"  << I  << "\n\n" << norma << "\t"  << determinante  << std::endl;
+  cout << H << "\n\n"  << I  << "\n\n" << norma << "\t"  << determinante  <<endl;
   
   return 0;
 }
+
